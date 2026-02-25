@@ -282,6 +282,7 @@ new #[Layout('layouts::public')] #[Title('Vim Cheatsheet')] class extends Compon
                         icon="magnifying-glass"
                         size="sm"
                         @keydown.escape="$wire.set('search', '')"
+                        clearable
                     />
                 </div>
             </div>
