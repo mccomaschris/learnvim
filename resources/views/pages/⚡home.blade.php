@@ -224,13 +224,37 @@ new #[Layout('layouts::public')] #[Title('Vim Cheatsheet')] class extends Compon
                 ],
             ],
             [
-                'name' => 'Macros',
+                'name' => 'Project Search (Telescope)',
                 'commands' => [
-                    ['keys' => ['q', '{a-z}'], 'description' => 'Start recording macro into register'],
-                    ['keys' => ['q'], 'description' => 'Stop recording macro'],
-                    ['keys' => ['@', '{a-z}'], 'description' => 'Play macro from register'],
-                    ['keys' => ['@@'], 'description' => 'Replay last used macro'],
-                    ['keys' => ['{n}', '@', '{a-z}'], 'description' => 'Run macro n times'],
+                    ['keys' => ['<leader>', 'fg'], 'description' => 'Live grep — search text across all project files (requires telescope.nvim)'],
+                    ['keys' => ['<leader>', 'ff'], 'description' => 'Find files — fuzzy search filenames across the project'],
+                    ['keys' => ['<leader>', 'fw'], 'description' => 'Grep word under cursor across all files'],
+                    ['keys' => ['<leader>', 'fb'], 'description' => 'Search open buffers'],
+                    ['keys' => [':Telescope live_grep'], 'description' => 'Open live grep via command (useful if no keybind set)'],
+                    ['keys' => [':grep', '{pattern}'], 'description' => 'Built-in grep using grepprg (set to ripgrep for best results); results go to quickfix'],
+                    ['keys' => [':vimgrep', '{pattern}', '**/*'], 'description' => 'Built-in Vimscript grep across all files recursively'],
+                    ['keys' => [':copen'], 'description' => 'Open the quickfix list to browse :grep / :vimgrep results'],
+                    ['keys' => [':cn'], 'description' => 'Jump to next quickfix result'],
+                    ['keys' => [':cp'], 'description' => 'Jump to previous quickfix result'],
+                ],
+            ],
+            [
+                'name' => 'Surround (nvim-surround)',
+                'commands' => [
+                    ['keys' => ['ys', '{motion}', '{char}'], 'description' => 'Add surround around motion — e.g. ysiw" wraps word in quotes'],
+                    ['keys' => ['yss', '{char}'], 'description' => 'Surround entire line'],
+                    ['keys' => ['ds', '{char}'], 'description' => 'Delete surrounding delimiter — e.g. ds" removes surrounding quotes'],
+                    ['keys' => ['cs', '{old}', '{new}'], 'description' => 'Change surrounding delimiter — e.g. cs"( replaces " with ('],
+                    ['keys' => ['cst', '{char}'], 'description' => 'Change surrounding HTML/XML tag — e.g. cst( replaces <div>...</div> with (...)'],
+                    ['keys' => ['dst'], 'description' => 'Delete surrounding HTML/XML tag — e.g. removes <div> and </div>'],
+                    ['keys' => ['S', '{char}'], 'description' => 'Surround visual selection (visual mode)'],
+                    ['keys' => ['ysa', '{motion}', '{char}'], 'description' => 'Add surround around a Treesitter node — e.g. ysaf( wraps a function call'],
+                ],
+            ],
+            [
+                'name' => 'Workflows',
+                'commands' => [
+                    ['keys' => ['f"', ';', 'i'], 'description' => 'Jump to closing quote of an HTML attribute — e.g. to append Tailwind classes: f" lands on the opening quote, ; repeats to the closing quote, i inserts before it'],
                 ],
             ],
         ];
